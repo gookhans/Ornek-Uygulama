@@ -7,13 +7,23 @@
         xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v15.1" x:Class="OrnekUygulama.Register"
         mc:Ignorable="d"
         Title="Register" Height="466.667" Width="521.465">
+    <Window.Background>
+        <SolidColorBrush Color="White"/>
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="98*"/>
+            <ColumnDefinition Width="15*"/>
             <ColumnDefinition Width="400*"/>
         </Grid.ColumnDefinitions>
 
-        <dxlc:LayoutControl Header="Header" UseLayoutRounding="True" View="GroupBox" Margin="10,-10,-10,10" Orientation="Vertical" Grid.ColumnSpan="2">
+        <dxlc:LayoutControl Header="Header" UseLayoutRounding="True" View="GroupBox" Margin="10,-10,-10,10" Orientation="Vertical" Grid.ColumnSpan="3" Background="{x:Null}">
+            <dxlc:LayoutControl.MovingItemPlaceHolderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FFCBBA71" Offset="1"/>
+                </LinearGradientBrush>
+            </dxlc:LayoutControl.MovingItemPlaceHolderBrush>
             <dxlc:LayoutGroup>
                 <dxlc:LayoutGroup x:Name="layoutGroup" VerticalAlignment="Top" Orientation="Vertical">
                     <dxlc:LayoutItem IsRequired="True" Label="First Name:" LabelPosition="Top">
@@ -44,7 +54,7 @@
                 </dxlc:LayoutItem>
             </dxlc:LayoutGroup>
             <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
-                <Label x:Name="GuvenlikKod" Content="kod" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="100" FontSize="18.667" FontWeight="Bold" FontStyle="Oblique" Foreground="#FF92ABCF" Background="#FFC9DCD7" BorderThickness="0" RenderTransformOrigin="0.5,0.5" TextOptions.TextFormattingMode="Display" Margin="0,0,0,-1" UseLayoutRounding="False" Padding="5" HorizontalContentAlignment="Center">
+                <Label x:Name="GuvenlikKod" Content="kod" Height="45" Width="100" FontSize="18.667" FontWeight="Bold" FontStyle="Oblique" Foreground="#FF92ABCF" Background="#FFC9DCD7" BorderThickness="0" RenderTransformOrigin="0.5,0.5" TextOptions.TextFormattingMode="Display" Margin="0,0,0,-1" UseLayoutRounding="False" Padding="5" HorizontalContentAlignment="Center">
                     <Label.OpacityMask>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="Black" Offset="0"/>
@@ -59,10 +69,23 @@
                     </Label.BorderBrush>
                 </Label>
                 <dxlc:LayoutItem Label="" Width="150" Height="45">
-                    <dxe:TextEdit Width="100" RenderTransformOrigin="0.5,0.5"/>
+                    <dxe:TextEdit x:Name="Tkod" Width="100" RenderTransformOrigin="0.5,0.5" FontSize="18.667" FontWeight="Bold" Foreground="#FFDCEAF7" HorizontalContentAlignment="Center" BorderBrush="#FFAC8A8A" Background="White"/>
                 </dxlc:LayoutItem>
             </dxlc:LayoutGroup>
-            <Button x:Name="button" Content="Button" Height="20" Width="40"/>
+            <Button x:Name="Bkayit" Content="Kayıt Ol" RenderTransformOrigin="0.5,0.5" Margin="0,-50,20,0" Width="100" Height="45" HorizontalAlignment="Right" Opacity="0.8" BorderThickness="2" Cursor="Arrow" Click="Bkayit_Click">
+                <Button.ContextMenu>
+                    <ContextMenu/>
+                </Button.ContextMenu>
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#66819E9E" Offset="0"/>
+                        <GradientStop Color="#FF8FBDF9" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
         </dxlc:LayoutControl>
 
     </Grid>

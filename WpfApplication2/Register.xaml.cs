@@ -27,11 +27,11 @@ namespace OrnekUygulama
             InitializeComponent();
             guvenlikkodu();
         }
-        
+        String kod;
         public void guvenlikkodu()
         {
             
-           String kod = "";
+            kod = "";
             int hangisi,harf,sayac;
             Random Rharf = new Random();
             Random Rrakam = new Random();
@@ -58,6 +58,14 @@ namespace OrnekUygulama
 
             }
             GuvenlikKod.Content = kod;
+        }
+
+        private void Bkayit_Click(object sender, RoutedEventArgs e)
+        {
+            if (Tkod.Text == kod)
+                MessageBox.Show("Kayıt Başarılı!");
+            else
+                MessageBox.Show("BAŞARISIZ!");
         }
     }
 }
