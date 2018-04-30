@@ -12,16 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
+using System.Net;
+using System.IO;
+using OrnekUygulama.ServiceReference1;
 
 namespace OrnekUygulama
 {
- 
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class Register : Window
     {
-        
+
         public Register()
         {
             InitializeComponent();
@@ -30,29 +34,29 @@ namespace OrnekUygulama
         String kod;
         public void guvenlikkodu()
         {
-            
+
             kod = "";
-            int hangisi,harf,sayac;
+            int hangisi, harf, sayac;
             Random Rharf = new Random();
             Random Rrakam = new Random();
             Random Rhangisi = new Random();
-            for(int i=0; i<5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 sayac = 0;
                 hangisi = Rhangisi.Next(1, 3);
                 if (hangisi == 1)
                     kod += Rrakam.Next(0, 10).ToString();
-               else if (hangisi == 2)
+                else if (hangisi == 2)
                 {
-                    
+
                     harf = Rharf.Next(1, 27);
                     for (char h = 'a'; h <= 'z'; h++)
                     {
                         sayac++;
                         if (harf == sayac)
-                         kod += h;
-                            
-                        
+                            kod += h;
+
+
                     }
                 }
 
@@ -62,10 +66,14 @@ namespace OrnekUygulama
 
         private void Bkayit_Click(object sender, RoutedEventArgs e)
         {
-            if (Tkod.Text == kod)
-                MessageBox.Show("Kayıt Başarılı!");
-            else
-                MessageBox.Show("BAŞARISIZ!");
+            urunservisPortTypeClient service = new urunservisPortTypeClient();
+        
+            var st = service.vtBaglan();
+          MessageBox.Show(st);
+           
         }
     }
 }
+
+         
+
