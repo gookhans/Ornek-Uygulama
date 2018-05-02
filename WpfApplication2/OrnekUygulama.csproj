@@ -127,9 +127,6 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="Service References\ServiceReference1\create_wsdl.wsdl" />
-    <None Include="Service References\ServiceReference1\OrnekUygulama.ServiceReference1.uyeListe.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

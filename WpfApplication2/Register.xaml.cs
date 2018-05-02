@@ -15,7 +15,9 @@ using System.Windows.Shapes;
 using System.Xml;
 using System.Net;
 using System.IO;
+using System.Security.Cryptography;
 using OrnekUygulama.ServiceReference1;
+
 
 namespace OrnekUygulama
 {
@@ -34,7 +36,7 @@ namespace OrnekUygulama
         String kod;
         public void guvenlikkodu()
         {
-
+            
             kod = "";
             int hangisi, harf, sayac;
             Random Rharf = new Random();
@@ -64,13 +66,48 @@ namespace OrnekUygulama
             GuvenlikKod.Content = kod;
         }
 
+        private String crypt(String passwd)
+        {
+            byte[] salt;
+            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+
+            var pbkdf2 = new Rfc2898DeriveBytes(passwd, salt, 10000);
+            byte[] hash = pbkdf2.GetBytes(20);
+
+            byte[] hashBytes = new byte[36];
+            Array.Copy(salt, 0, hashBytes, 0, 16);
+            Array.Copy(hash, 0, hashBytes, 16, 20);
+
+            string savedPasswordHash = Convert.ToBase64String(hashBytes);
+            return savedPasswordHash;
+
+        }
+
+
         private void Bkayit_Click(object sender, RoutedEventArgs e)
         {
-            urunservisPortTypeClient service = new urunservisPortTypeClient();
-        
-            var st = service.vtBaglan();
-          MessageBox.Show(st);
-           
+            serviceConnectionPortTypeClient service = new serviceConnectionPortTypeClient();
+            //Boolean st = service.dbConnect();
+
+            if (    TfirstName.Text != "" && 
+                    TlastName.Text != "" && 
+                    Tmail.Text!="" &&
+                    Tpass.Text!="" &&
+                    Tmail.Text==Tmail2.Text &&
+                    Tpass.Text==Tpass2.Text &&
+                    kod==Tkod.Text
+                    )
+            {
+
+               String HashPass= crypt(Tpass.Text);
+
+                var st = service.memberRegistration(TfirstName.Text, TlastName.Text, Tmail.Text, HashPass);
+                MessageBox.Show(st);
+            }
+            else
+            {
+                MessageBox.Show("Please check the information you have input and make sure your email address is not registered on the system ");
+            }
         }
     }
 }

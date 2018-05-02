@@ -1,87 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:urunservis" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:urunservis" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:serviceConnection" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:serviceConnection" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
-    <xsd:schema targetNamespace="urn:urunservis">
+    <xsd:schema targetNamespace="urn:serviceConnection">
       <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
       <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
-      <xsd:complexType name="Uye">
+      <xsd:complexType name="Member">
         <xsd:all>
-          <xsd:element name="ad" type="xsd:string" />
-          <xsd:element name="soyad" type="xsd:string" />
-          <xsd:element name="tarih" type="xsd:date" />
+          <xsd:element name="id" type="xsd:id" />
+          <xsd:element name="firstName" type="xsd:string" />
+          <xsd:element name="lastName" type="xsd:string" />
+          <xsd:element name="email" type="xsd:string" />
+          <xsd:element name="password" type="xsd:password" />
+          <xsd:element name="dateReg" type="xsd:date" />
         </xsd:all>
       </xsd:complexType>
-      <xsd:complexType name="uyeListe">
+      <xsd:complexType name="memberList">
         <xsd:all>
-          <xsd:element minOccurs="0" maxOccurs="1" name="Uye" type="tns:Uye" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Member" type="tns:Member" />
         </xsd:all>
       </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="vtBaglanRequest" />
-  <wsdl:message name="vtBaglanResponse">
+  <wsdl:message name="dbConnectRequest" />
+  <wsdl:message name="dbConnectResponse">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="memberRegistrationRequest">
+    <wsdl:part name="firstName" type="xsd:string" />
+    <wsdl:part name="lastName" type="xsd:string" />
+    <wsdl:part name="email" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:password" />
+  </wsdl:message>
+  <wsdl:message name="memberRegistrationResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
-  <wsdl:message name="uyeDondurRequest" />
-  <wsdl:message name="uyeDondurResponse">
-    <wsdl:part name="return" type="tns:uyeListe" />
-  </wsdl:message>
-  <wsdl:message name="uyeKontrolRequest">
-    <wsdl:part name="isim" type="xsd:string" />
-  </wsdl:message>
-  <wsdl:message name="uyeKontrolResponse">
-    <wsdl:part name="return" type="xsd:string" />
-  </wsdl:message>
-  <wsdl:portType name="urunservisPortType">
-    <wsdl:operation name="vtBaglan">
-      <documentation>Veri TabanÄ±na BaÄlanÄ±r</documentation>
-      <wsdl:input message="tns:vtBaglanRequest" />
-      <wsdl:output message="tns:vtBaglanResponse" />
+  <wsdl:portType name="serviceConnectionPortType">
+    <wsdl:operation name="dbConnect">
+      <documentation>connected to the database</documentation>
+      <wsdl:input message="tns:dbConnectRequest" />
+      <wsdl:output message="tns:dbConnectResponse" />
     </wsdl:operation>
-    <wsdl:operation name="uyeDondur">
-      <documentation>Tum Uyeleri dondurur</documentation>
-      <wsdl:input message="tns:uyeDondurRequest" />
-      <wsdl:output message="tns:uyeDondurResponse" />
-    </wsdl:operation>
-    <wsdl:operation name="uyeKontrol">
-      <documentation>Uye stok kontrolu yapar.</documentation>
-      <wsdl:input message="tns:uyeKontrolRequest" />
-      <wsdl:output message="tns:uyeKontrolResponse" />
+    <wsdl:operation name="memberRegistration">
+      <documentation>adds member to database</documentation>
+      <wsdl:input message="tns:memberRegistrationRequest" />
+      <wsdl:output message="tns:memberRegistrationResponse" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="urunservisBinding" type="tns:urunservisPortType">
+  <wsdl:binding name="serviceConnectionBinding" type="tns:serviceConnectionPortType">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
-    <wsdl:operation name="vtBaglan">
-      <soap:operation soapAction="urn:urunservis#vtBaglan" style="rpc" />
+    <wsdl:operation name="dbConnect">
+      <soap:operation soapAction="urn:serviceConnection#dbConnect" style="rpc" />
       <wsdl:input>
-        <soap:body use="encoded" namespace="urn:urunservis" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:body use="encoded" namespace="urn:serviceConnection" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="encoded" namespace="urn:urunservis" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:body use="encoded" namespace="urn:serviceConnection" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="uyeDondur">
-      <soap:operation soapAction="urn:urunservis#uyeDondur" style="rpc" />
+    <wsdl:operation name="memberRegistration">
+      <soap:operation soapAction="urn:serviceConnection#memberRegistration" style="rpc" />
       <wsdl:input>
-        <soap:body use="encoded" namespace="urn:urunservis" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:body use="encoded" namespace="urn:serviceConnection" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="encoded" namespace="urn:urunservis" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="uyeKontrol">
-      <soap:operation soapAction="urn:urunservis#uyeKontrol" style="rpc" />
-      <wsdl:input>
-        <soap:body use="encoded" namespace="urn:urunservis" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="encoded" namespace="urn:urunservis" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:body use="encoded" namespace="urn:serviceConnection" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="urunservis">
-    <wsdl:port name="urunservisPort" binding="tns:urunservisBinding">
-      <soap:address location="http://gsancar.com/rpc/urunservis.php" />
+  <wsdl:service name="serviceConnection">
+    <wsdl:port name="serviceConnectionPort" binding="tns:serviceConnectionBinding">
+      <soap:address location="http://webs.gsancar.com/rpc/serviceConnection.php" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
