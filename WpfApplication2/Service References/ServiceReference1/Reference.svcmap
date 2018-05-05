@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="755c4f22-02da-4d39-b2bd-52844a375082" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="784bb48a-f458-4f5a-a9d4-74ea8378ac2d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,7 +22,7 @@
     <MetadataSource Address="http://webs.gsancar.com/mod/create_wsdl.php?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="create_wsdl.wsdl" MetadataType="Wsdl" ID="b56d3c0a-3bc9-451c-a618-90bf07855079" SourceId="1" SourceUrl="http://webs.gsancar.com/mod/create_wsdl.php?wsdl" />
+    <MetadataFile FileName="create_wsdl.wsdl" MetadataType="Wsdl" ID="3551835d-4de0-4004-b149-d66f3efec02f" SourceId="1" SourceUrl="http://webs.gsancar.com/mod/create_wsdl.php?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

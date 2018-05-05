@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml;
-using System.Net;
-using System.IO;
 using System.Security.Cryptography;
 using OrnekUygulama.ServiceReference1;
 
-
 namespace OrnekUygulama
 {
-
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Register : Window
+    public partial class Login : Window
     {
-
-        public Register()
+        public Login()
         {
             InitializeComponent();
             guvenlikkodu();
@@ -36,7 +29,7 @@ namespace OrnekUygulama
         String kod;
         public void guvenlikkodu()
         {
-            
+
             kod = "";
             int hangisi, harf, sayac;
             Random Rharf = new Random();
@@ -63,7 +56,7 @@ namespace OrnekUygulama
                 }
 
             }
-            GuvenlikKod.Content = kod;
+            GuvenlikKodu.Content = kod;
         }
 
         private String crypt(String passwd)
@@ -84,38 +77,38 @@ namespace OrnekUygulama
                 strBuilder.Append(result[i].ToString("x2"));
             }
 
-            return strBuilder.ToString();
+           return strBuilder.ToString();
 
         }
 
+        private void Bregister_Click(object sender, RoutedEventArgs e)
+        {
+            Register frmReg = new Register();
+            frmReg.Show();
+            this.Close();
+        }
 
-        private void Bkayit_Click(object sender, RoutedEventArgs e)
+        private void Blogin_Click(object sender, RoutedEventArgs e)
         {
             serviceConnectionPortTypeClient service = new serviceConnectionPortTypeClient();
-            
 
-            if (    TfirstName.Text != "" && 
-                    TlastName.Text != "" && 
-                    Tmail.Text!="" &&
-                    Tpass.Text!="" &&
-                    Tmail.Text==Tmail2.Text &&
-                    Tpass.Text==Tpass2.Text &&
-                    kod==Tkod.Text
-                    )
+            if (
+                  Temail.Text != "" &&
+                  Tpassword.Text != "" &&
+                  
+                  kod == Tkod.Text
+                  )
             {
 
-               String HashPass= crypt(Tpass.Text);
+              
 
-                var st = service.memberRegistration(TfirstName.Text, TlastName.Text, Tmail.Text, HashPass);
-                if (st == "Successful")
-                {
+                String HashPass = crypt(Tpassword.Text);
+
+                var st = service.memberLogin(Temail.Text, HashPass);
+               
                     MessageBox.Show(st);
-                    Login frmLog = new Login();
-                    frmLog.Show();
-                    this.Close();
-                }
-                else
-                    MessageBox.Show("Error! Try Again");
+                    
+                
             }
             else
             {
@@ -124,6 +117,3 @@ namespace OrnekUygulama
         }
     }
 }
-
-         
-

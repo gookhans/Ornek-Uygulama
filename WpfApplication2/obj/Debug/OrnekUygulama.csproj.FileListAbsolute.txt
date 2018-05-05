@@ -103,3 +103,11 @@ C:\Users\laptop\Documents\Visual Studio 2015\Projects\WpfApplication2\WpfApplica
 C:\Users\laptop\Documents\Visual Studio 2015\Projects\WpfApplication2\WpfApplication2\bin\Debug\es\DevExpress.Office.v15.1.Core.resources.dll
 C:\Users\laptop\Documents\Visual Studio 2015\Projects\WpfApplication2\WpfApplication2\bin\Debug\ja\DevExpress.Office.v15.1.Core.resources.dll
 C:\Users\laptop\Documents\Visual Studio 2015\Projects\WpfApplication2\WpfApplication2\bin\Debug\ru\DevExpress.Office.v15.1.Core.resources.dll
+C:\Users\laptop\Documents\Visual Studio 2015\Projects\WpfApplication2\WpfApplication2\bin\Debug\DevExpress.Xpf.Controls.v15.1.dll
+C:\Users\laptop\Documents\Visual Studio 2015\Projects\WpfApplication2\WpfApplication2\bin\Debug\DevExpress.Xpf.Controls.v15.1.xml
+C:\Users\laptop\Documents\Visual Studio 2015\Projects\WpfApplication2\WpfApplication2\bin\Debug\de\DevExpress.Xpf.Controls.v15.1.resources.dll
+C:\Users\laptop\Documents\Visual Studio 2015\Projects\WpfApplication2\WpfApplication2\bin\Debug\es\DevExpress.Xpf.Controls.v15.1.resources.dll
+C:\Users\laptop\Documents\Visual Studio 2015\Projects\WpfApplication2\WpfApplication2\bin\Debug\ja\DevExpress.Xpf.Controls.v15.1.resources.dll
+C:\Users\laptop\Documents\Visual Studio 2015\Projects\WpfApplication2\WpfApplication2\bin\Debug\ru\DevExpress.Xpf.Controls.v15.1.resources.dll
+C:\Users\laptop\Documents\Visual Studio 2015\Projects\WpfApplication2\WpfApplication2\obj\Debug\Login.g.cs
+C:\Users\laptop\Documents\Visual Studio 2015\Projects\WpfApplication2\WpfApplication2\obj\Debug\Login.baml

@@ -32,6 +32,15 @@ namespace OrnekUygulama.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="urn:serviceConnection#memberRegistration", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         System.Threading.Tasks.Task<string> memberRegistrationAsync(string firstName, string lastName, string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:serviceConnection#memberLogin", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        string memberLogin(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:serviceConnection#memberLogin", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        System.Threading.Tasks.Task<string> memberLoginAsync(string email, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -75,6 +84,14 @@ namespace OrnekUygulama.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> memberRegistrationAsync(string firstName, string lastName, string email, string password) {
             return base.Channel.memberRegistrationAsync(firstName, lastName, email, password);
+        }
+        
+        public string memberLogin(string email, string password) {
+            return base.Channel.memberLogin(email, password);
+        }
+        
+        public System.Threading.Tasks.Task<string> memberLoginAsync(string email, string password) {
+            return base.Channel.memberLoginAsync(email, password);
         }
     }
 }

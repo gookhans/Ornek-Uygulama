@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApplication2"
         xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v15.1" x:Class="OrnekUygulama.Register"
         mc:Ignorable="d"
-        Title="Register" Height="466.667" Width="521.465">
+        Title="Register" Height="500" Width="500">
     <Window.Background>
         <SolidColorBrush Color="White"/>
     </Window.Background>
@@ -39,7 +39,7 @@
             </dxlc:LayoutGroup>
             <dxlc:LayoutGroup Header="Emails" UseLayoutRounding="True" View="GroupBox" Orientation="Vertical">
                 <dxlc:LayoutItem Label="E-Mail">
-                    <dxe:TextEdit x:Name="Tmail" EditValue="support@devexpress.com" MaskType="RegEx" Mask="[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,4}"/>
+                    <dxe:TextEdit x:Name="Tmail" MaskType="RegEx" Mask="[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,4}"/>
                 </dxlc:LayoutItem>
                 <dxlc:LayoutItem Label="E-Mail Verify">
                     <dxe:TextEdit x:Name="Tmail2" MaskType="RegEx" Mask="[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,4}"/>
